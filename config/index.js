@@ -30,7 +30,36 @@ module.exports = {
         pathRewrite:{
           '^/detail':''
         }
-      } 
+      },
+      "/mls":{
+        target:'http://simba-api.meilishuo.com',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/mls':''
+        }
+      },
+      "/list":{
+        target:'http://list.meilishuo.com/',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/list':''
+        }
+      },
+      "/dtl":{
+        target:'http://m.meilishuo.com/',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/dtl':''
+        }
+      },
+      '/login':{
+        target:'http://https://m.maizuo.com',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/login':''
+        }
+      },
+
     },
 
     // Various Dev Server settings

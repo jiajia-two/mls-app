@@ -18,8 +18,8 @@
             <p class="title">{{goods.itemInfo.title}}</p>
             <div class="price">
                 <span class="nowprice">{{goods.itemInfo.price}}</span>
-                <span class="oldprice">{{goods.itemInfo.oldPrice}}</span>
-                <span class="dis">{{goods.itemInfo.discountDesc}}</span>
+                <span class="oldprice" v-if="goods.itemInfo.oldPrice">{{goods.itemInfo.oldPrice}}</span>
+                <span class="dis" v-if="goods.itemInfo.discountDesc">{{goods.itemInfo.discountDesc}}</span>
             </div>
             <div class="sellnum">
                 <span>{{goods.columns[0]}}</span>
@@ -69,7 +69,7 @@
                             <li 
                             v-for="(score,i) in goods.shopInfo.score"
                             :key="i"
-                            > <span>{{score.name}}</span>  <em>{{score.score}}</em> <i>{{score.isBetter}}</i></li>
+                            > <span>{{score.name}}</span>  <em>{{score.score}}</em> <i v-if=score.isBetter>高</i><i v-else>低</i></li>
                         </ul> 
                     </div>  
                 </div>
@@ -88,11 +88,10 @@ export default {
     name:'goodsDetail',
     data(){
         return {
-            id: this.$route.query.goodsId,
+            // id: this.$route.query.goodsId,
             loading:false,
-            goods:{},
+            goods:[],
             save:false,
-           
         }
     },
     
@@ -283,14 +282,20 @@ export default {
                 justify-content: space-around;
                 .shop-evaluate{
                     border-left:1px solid #ccc;
+                    width:1.60rem;
                     padding-left:0.4rem;
                     ul{
                         display: flex;
                         flex-direction: column;
                         align-items: flex-start;
-                    }
-                    em{
-                        color:#f13e3a;
+                        li{
+                            em{
+                                color:#f13e3a;
+                            }
+                            i{
+                                color:#f13e3a;
+                            }
+                        }
                     }
                 }
             }

@@ -7,6 +7,10 @@ import GoodsPop from '../components/pages/Home/GoodsPop.vue'
 import GoodsNew from '../components/pages/Home/GoodsNew.vue'
 import GoodsBase from '../components/pages/Home/GoodsBase.vue'
 import GoodsDetail from '../components/pages/Detail/GoodsDetail.vue'
+import Login from '../components/pages/Mine/login.vue'
+import Classify from '../components/pages/classify/Classify.vue'
+import secClass from '../components/pages/secondclassify/secClassify.vue'
+
 
 
 const routes = [
@@ -15,7 +19,7 @@ const routes = [
         component:Home,
         children:[
             {
-                path:'/',
+                path:'',
                 component:GoodsType,
                 children:[
                     {
@@ -46,7 +50,22 @@ const routes = [
         path:'/goodsDetail',
         name:'goodsDetail',
         component:GoodsDetail,
-    }
+    },
+    {
+        path:'/login',
+        name:'login',
+        component:Login
+    },
+    {
+        path:'/classify',
+        name:'classify',
+        component:Classify
+    },
+    {
+        path:'/sencondcla',
+        name:'sencondcla',
+        component:secClass
+    },
     
 
 ]

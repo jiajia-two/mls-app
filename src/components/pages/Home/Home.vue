@@ -4,6 +4,7 @@
       <homeBanner></homeBanner>
       <homeTopic></homeTopic>
       <router-view></router-view>
+      <app-nav></app-nav>
 
   </div>
 </template>
@@ -21,7 +22,6 @@ export default {
     homeHeader,
     homeBanner,
     homeTopic,
-
   }
 }
 </script>

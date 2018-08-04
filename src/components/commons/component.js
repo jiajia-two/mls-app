@@ -1,0 +1,11 @@
+import Vue from 'vue'
+import AppNav from './Nav.vue'
+import AppHeader from './AppHeader.vue'
+import UITitleBox from './UITitleBox.vue'
+import UIInput from './UIInput.vue'
+
+
+Vue.component('ui-title-box', UITitleBox)
+Vue.component('ui-input', UIInput)
+Vue.component('app-header', AppHeader)
+Vue.component('app-nav', AppNav)

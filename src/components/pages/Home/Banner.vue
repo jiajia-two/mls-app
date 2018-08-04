@@ -49,7 +49,7 @@ export default {
             })
         }
     },
-    beforeMounted () {
+    created () {
         this.getBanners()
     }
 }
