@@ -24,7 +24,7 @@ export default {
         font-size: 0.16rem;  
         a {
             color: $base-color;
-            font-size: 0.24rem;
+            font-size: 0.32rem;
         }
     }
 </style>

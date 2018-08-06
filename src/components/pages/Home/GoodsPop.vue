@@ -23,26 +23,29 @@ export default {
     data(){
         return {
             allGoods:[],
+            frame:1,
+            page:1,
+            callback:'jsonp'+4,
         }
     },
     methods: {
         getAllGoodsPop(){
             this.$http.get('/index2/search',{
                 params:{
-                    frame: 1,
-                    page: 1,
+                    frame: this.fram,
+                    page: this.page,
                     cKey: 'wap-index',
                     _mgjuuid: 'cb1598d6-d81b-4532-9b7f-f8d389d2159a',
                     sort: 'sell',
                     _: 1533209669629,
-                    callback:'jsonp4',
+                    callback:this.callback,
                 }
             }).then( res=> {
                 var x = res.data.replace('/**/jsonp4(','')
                 var y = x.substr('',x.length-2)
                 var z = window.eval('('+y+')')
                 var last = z.data.list
-                this.allGoods = last
+                this.allGoods = this.allGoods.concat(last)
             })
         },
         selectGoods(event){

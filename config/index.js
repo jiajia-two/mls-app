@@ -45,20 +45,14 @@ module.exports = {
           '^/list':''
         }
       },
-      "/dtl":{
-        target:'http://m.meilishuo.com/',
-        changeOrigin:true,
-        pathRewrite:{
-          '^/dtl':''
+      
+      "/mz": {
+        target: 'http://m.maizuo.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/mz': ''
         }
-      },
-      '/login':{
-        target:'http://https://m.maizuo.com',
-        changeOrigin:true,
-        pathRewrite:{
-          '^/login':''
-        }
-      },
+      }
 
     },
 

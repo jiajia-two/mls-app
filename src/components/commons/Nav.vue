@@ -1,6 +1,6 @@
 <template>
     <footer class="nav-bar">
-        <router-link exact :to = "nav.path" v-for = " nav in navs " :key = "nav.id" class="tab-item external" 
+        <router-link :to = "nav.path" v-for = " nav in navs " :key = "nav.id" class="tab-item external" 
             active-class="active">
                 <span :class="['fa', 'fa-' + nav.fa]"></span>
                 <span class="tab-label">{{ nav.title }}</span>
@@ -13,9 +13,10 @@
         data () {
             return {
                 navs:[
-                    { id: 1, title: '首页', fa: 'file-text-o ', path: '', name: 'home' },
+                    { id: 1, title: '首页', fa: 'file-text-o ', path: '/home', name: 'home' },
                     { id: 2, title: '分类', fa: 'shopping-bag', path: '/classify', name: 'Classify' },
-                    { id: 3, title: '我的', fa: 'user-circle-o', path: '/login', name: 'login' }
+                    { id: 3, title: '购物车', fa: 'car', path: '/car', name: 'car' },
+                    { id: 4, title: '我', fa: 'user-circle-o', path: '/login', name: 'login' }
                 ]
             }
         }

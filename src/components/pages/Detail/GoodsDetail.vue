@@ -78,6 +78,7 @@
                 <button>进店逛逛</button>
             </div>
         </div>
+      <app-car-nav></app-car-nav>
        
     </div>
 </template>
@@ -134,6 +135,7 @@ export default {
 .goods-detail{
     width: 100%;
     height: 100%;
+    margin-bottom: 1rem;
     .swiper-container {
         background:  #fff;
       .swiper-slide {

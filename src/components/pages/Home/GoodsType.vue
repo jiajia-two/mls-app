@@ -1,7 +1,7 @@
 <template>
     <div class="home-goods-type">
         <div class="type">
-            <router-link active-class="active" exact :to = "type.path" v-for="type in types"
+            <router-link active-class="active"  :to = "{name: type.name}" v-for="type in types"
                 :key = "type.id" > 
                 {{type.title}}
             </router-link>
@@ -16,9 +16,9 @@ export default {
     data(){
         return {
             types:[
-                    {id:1,title:"流行",path:'/goodsPop',name:"goodsPop"},
-                    {id:2,title:"新款",path:'/goodsNew',name:"goodsNew"},
-                    {id:3,title:"精选",path:'/goodsBase',name:"goodsBase"}
+                    {id:1,title:"流行",name:"goodsPop"},
+                    {id:2,title:"新款",name:"goodsNew"},
+                    {id:3,title:"精选",name:"goodsBase"}
                 ]
         }
     },

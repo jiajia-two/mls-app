@@ -8,7 +8,7 @@
         <div class="title">应季流行</div>
         <div>
             <div class="list" v-for="(item,i) in items" :key="i">
-                <div v-if="item.image" class="classify1">
+                <div @click="getFcid(item.link)" v-if="item.image" class="classify1" :link="item.link">
                     <img :src="item.image" alt=""  class="imgClass">
                     <div class="cla">{{item.title}}</div>  
                 </div>
@@ -62,7 +62,6 @@
                             fcid: pid               
                         }
                     }).then(res => {
-                        console.log(res)
                         this.items = res.data.data.list
                     })
                 }    
@@ -76,6 +75,23 @@
                         goodsId:id
                     }
                 })
+            },
+            getFcid(link){
+                var x  =link.indexOf('?')
+                var y =''
+                y=link
+                var url =y.substr(x+1)
+                var arr = url.split('&')
+                var obj = {}; 
+                arr.forEach((item)=>{
+                    obj[item.split('=')[0]]	= item.split('=')[1]		
+                })
+                this.$router.push({
+					path:'/secdetail',
+					query:{
+					    fcid:obj.fcid,
+					}
+		  		})
             }
         },
         created(){
@@ -126,7 +142,8 @@
             // width:100%;
             flex:1;
             flex-flow: column;
-            // justify-content: space-around;
+            align-items:center;
+            text-align:center;
             .imgClass{
                 width:0.8rem;
                 height:0.92rem;
@@ -149,7 +166,7 @@
                 }
                .desPic{
                     width:1.8rem;
-                    height:2.0rem;
+                    height:2.69rem;
                 }
                 .oldprice{
                     text-decoration: line-through;

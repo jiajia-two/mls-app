@@ -26,5 +26,7 @@ export default {
 }
 </script>
 <style scoped lang = "scss">
-
+  #app-home{
+    margin-bottom: 1rem;
+  }
 </style>

@@ -1,7 +1,7 @@
 
 <template>
     <div class="app-login page page-top">
-        <app-header><span style="width:1.9rem;display:flex; justify-content:space-between"><i>登陆</i><i style="font-size:0.12rem;">?忘记密码</i></span></app-header>
+        <app-header><span style="width:1.9rem;display:flex; justify-content:space-between;font-size:0.20rem;"><i>登陆</i><i style="font-size:0.16rem;">?忘记密码</i></span></app-header>
 
         <form @submit.prevent="submit">
             <label>你的手机号是？</label>
@@ -13,7 +13,7 @@
             <button type="submit" class="submit">登陆</button>
         </form>
     </div>
-    </template>
+</template>
 <script>
 import md5 from 'js-md5'
     export default {
@@ -35,6 +35,16 @@ import md5 from 'js-md5'
             }
         },
         methods: {
+             sendCode() { //发送验证码
+                this.$http.post('/mz/v4/api/code?__t=' + Date.now,{
+                    mobile: this.phone,
+                    type: "2"
+           }).then(res => {
+                    if (res.data.status === 0) {
+                        console.log('验证码发送成功')
+                    }
+                })
+            },
             submit() {
                 if (!this.code) return false;
                 this.$store.dispatch('action_login', {
@@ -49,66 +59,56 @@ import md5 from 'js-md5'
                             }
                         }
                         console.log(111)
-                        this.$router.push('/')
+                        this.$router.push('/home/goodsPop')
                     },
                     fail: () => {
                     console.log('短信验证码错误')
                     }
                 })
             },
-            sendCode() { //发送验证码
-                this.$http.post('/login/v4/api/login?__t=' + Date.now,{
-                    mobile: this.phone,
-                    type: "2"
-           }).then(res => {
-                    if (res.data.status === 0) {
-                        console.log('验证码发送成功')
-                    }
-                })
-            }
         }
     }
 </script>
 
 <style lang="scss">
-@import "../../../stylesheets/_base.scss";
-.app-login {
-  form {
-    margin-top: 0.7rem;
-    padding: 0.15rem;
-    text-align: center;
-    label {
-      padding-left: 0.15rem;
-      margin-top: 0.15rem;
-      display: block;
-      margin-bottom: 0.2rem;
-      font-size: 0.16rem;
+    @import "../../../stylesheets/_base.scss";
+    .app-login {
+    form {
+        margin-top: 0.7rem;
+        padding: 0.15rem;
+        text-align: center;
+        label {
+        padding-left: 0.15rem;
+        margin-top: 0.15rem;
+        display: block;
+        margin-bottom: 0.2rem;
+        font-size: 0.16rem;
+        }
+        .submit {
+        width: 1.63rem;
+        background-color: $base-color;
+        color: #fff;
+        border: none;
+        border-radius: 0.36rem;
+        padding: 0.08rem 0.12rem;
+        font-size: 0.15rem;
+        outline: none;
+        margin: 0.45rem 0 0;
+        }
+        .send-code {
+        width: 0.95rem;
+        position: absolute;
+        right: 5px;
+        top: 15px;
+        background-color: #29a097;
+        color: #fff;
+        height: 0.3rem;
+        line-height: 0.3rem;
+        text-align: center;
+        border-radius: 3px;
+        cursor: pointer;
+        }
     }
-    .submit {
-      width: 1.63rem;
-      background-color: $base-color;
-      color: #fff;
-      border: none;
-      border-radius: 0.36rem;
-      padding: 0.08rem 0.12rem;
-      font-size: 0.15rem;
-      outline: none;
-      margin: 0.45rem 0 0;
     }
-    .send-code {
-      width: 0.95rem;
-      position: absolute;
-      right: 5px;
-      top: 15px;
-      background-color: #29a097;
-      color: #fff;
-      height: 0.3rem;
-      line-height: 0.3rem;
-      text-align: center;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-  }
-}
 </style>
 

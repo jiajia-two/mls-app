@@ -40,7 +40,7 @@ export default {
                 var y = x.substr('',x.length-2)
                 var z = window.eval('('+y+')')
                 var last = z.data.list
-                this.allGoods = last
+                this.allGoods = this.allGoods.concat(last)
             })
         },
         selectGoods(event){

@@ -47,7 +47,6 @@ export default {
 			arr.forEach((item)=>{
 				obj[item.split('=')[0]]	= item.split('=')[1]		
 			})
-			console.log(obj)
 			if(obj.pid){
 				this.$router.push({
 					path:'/sencondcla',
