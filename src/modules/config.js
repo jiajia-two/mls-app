@@ -10,9 +10,12 @@ import computed_rem from './rem'
  //计算rem
 computed_rem()
 
+//全局自定义指令
+
 // axios
 import axios from 'axios'
 Vue.prototype.$http = axios
+
 
 //filters
 

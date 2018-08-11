@@ -1,6 +1,9 @@
 <template>
     <div class="home-goods-new">
-        <ul >
+        <ul 
+        v-infinite-scroll="loadMore"
+        infinite-scroll-disabled="loading"
+        infinite-scroll-distance="50">
             <li
                 v-for="(goods,i) in allGoods"
                 :key = "i"
@@ -21,25 +24,24 @@ export default {
     data(){
         return {
             allGoods:[],
+            frame:0,
+            page:0,
+            callbacknum:7,
+            loading:false,
         }
     },
     methods: {
         getAllGoodsNew(){
-            this.$http.get('/index2/search',{
-                params:{
-                   frame: 1,
-                    page: 1,
-                    cKey: 'wap-index',
-                    _mgjuuid: 'cb1598d6-d81b-4532-9b7f-f8d389d2159a',
-                    sort: 'new',
-                    _: 1533210446368,
-                    callback: 'jsonp7'
-                }
+            this.$jsonp('/index2/search',{
+                frame: this.frame,
+                page: this.page,
+                cKey: 'wap-index',
+                _mgjuuid: 'cb1598d6-d81b-4532-9b7f-f8d389d2159a',
+                sort: 'new',
+                _: 1533210446368,
+                callback: 'jsonp'+this.callbacknum,
             }).then( res=> {
-                var x = res.data.replace('/**/jsonp7(','')
-                var y = x.substr('',x.length-2)
-                var z = window.eval('('+y+')')
-                var last = z.data.list
+                var last = res.data.list
                 this.allGoods = this.allGoods.concat(last)
             })
         },
@@ -53,6 +55,17 @@ export default {
                     _ajax: 1
                 }
             })
+        },
+         loadMore() {
+            this.loading = true;
+            setTimeout(() => {
+                let more = this.allGoods[this.allGoods.length - 1];
+                this.callbacknum+=1,
+                this.fram+=1
+                this.page+=1
+                this.getAllGoodsNew()
+                this.loading = false;
+            }, 1000);
         }
     },
     created(){

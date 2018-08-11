@@ -1,6 +1,9 @@
 <template>
     <div class="home-goods-pop">
-        <ul >
+        <ul
+        v-infinite-scroll="loadMore"
+        infinite-scroll-disabled="loading"
+        infinite-scroll-distance="100" >
             <li
                 v-for="(goods,i) in allGoods"
                 :key = "i"
@@ -15,36 +18,40 @@
     </div>
 </template>
 <script>
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
-import Vue from 'vue'
+import {Indicator} from 'mint-ui'
 export default {
     name:'homeGoodsPop',
     data(){
         return {
             allGoods:[],
-            frame:1,
-            page:1,
-            callback:'jsonp'+4,
+            frame:0,
+            page:0,
+            callbacknum:4,
+            loading:false,
         }
     },
     methods: {
         getAllGoodsPop(){
-            this.$http.get('/index2/search',{
-                params:{
-                    frame: this.fram,
-                    page: this.page,
-                    cKey: 'wap-index',
-                    _mgjuuid: 'cb1598d6-d81b-4532-9b7f-f8d389d2159a',
-                    sort: 'sell',
-                    _: 1533209669629,
-                    callback:this.callback,
-                }
+            Indicator.open({
+                text: '客官请稍等...',
+                spinnerType: 'fading-circle'
+            });
+            this.isloading = true
+            this.$jsonp('/index2/search',{
+                frame: this.frame,
+                page: this.page,
+                cKey: 'wap-index',
+                _mgjuuid: 'cb1598d6-d81b-4532-9b7f-f8d389d2159a',
+                sort: 'sell',
+                _: 1533209669629,
+                callback:'jsonp'+this.callbacknum,
             }).then( res=> {
-                var x = res.data.replace('/**/jsonp4(','')
-                var y = x.substr('',x.length-2)
-                var z = window.eval('('+y+')')
-                var last = z.data.list
+                Indicator.close()
+                this.isloading = false
+                var last = res.data.list
                 this.allGoods = this.allGoods.concat(last)
             })
         },
@@ -58,6 +65,17 @@ export default {
                     _ajax: 1
                 }
             })
+        },
+        loadMore() {
+            this.loading = true;
+            setTimeout(() => {
+                let more = this.allGoods[this.allGoods.length - 1];
+                this.callbacknum+=1,
+                this.fram+=1
+                this.page+=1
+                this.getAllGoodsPop()
+                this.loading = false;
+            }, 1000);
         }
     },
     created(){

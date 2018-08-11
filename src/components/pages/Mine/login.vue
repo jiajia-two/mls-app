@@ -20,7 +20,7 @@ import md5 from 'js-md5'
         name: 'login',
         data() {
             return {
-                phone: '13302661914',
+                phone: '',
                 code: ''
             }
         },

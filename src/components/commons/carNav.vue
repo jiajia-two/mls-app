@@ -32,6 +32,7 @@
         bottom:0;
         left:0;
         background:#fff;
+        z-index:1000;
         a{
             flex:1;
             height:0.65rem;

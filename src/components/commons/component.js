@@ -5,7 +5,6 @@ import UITitleBox from './UITitleBox.vue'
 import UIInput from './UIInput.vue'
 import AppCarNav from './carNav.vue'
 
-
 Vue.component('ui-title-box', UITitleBox)
 Vue.component('ui-input', UIInput)
 Vue.component('app-header', AppHeader)
