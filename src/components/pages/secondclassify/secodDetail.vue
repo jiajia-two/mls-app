@@ -33,7 +33,7 @@
                 var url =location.search;
                 var arr =url.split('=');
                 var pid = arr[1];
-                this.$http.get('/list/search',{
+                this.$http.get(this.config_server.list+'/search',{
                     params:{
                         frame: 0,
                         page: 1 ,

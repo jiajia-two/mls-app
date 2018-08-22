@@ -24,7 +24,7 @@ export default {
    },
    methods:{
 	   getClassify(){
-		   this.$http.get('/mls/venus/mce/v1/urlChange/pc',{
+		   this.$http.get(this.config_server.mls+'/venus/mce/v1/urlChange/pc',{
 			   params:{
 				   pid: 20783,
 				   channel:'wap',

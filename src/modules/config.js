@@ -15,6 +15,8 @@ computed_rem()
 // axios
 import axios from 'axios'
 Vue.prototype.$http = axios
+import server_config from './server_config'
+Vue.prototype.config_server = server_config
 
 
 //filters

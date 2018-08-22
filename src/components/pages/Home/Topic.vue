@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         getTopics (){
-            this.$http.get('/index1/jsonp/multiget/3',{
+            this.$http.get(this.config_server.index1+'/jsonp/multiget/3',{
                 params: {
                     pids: '13730',
                     callback: 'jsonp13730'

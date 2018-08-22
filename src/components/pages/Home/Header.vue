@@ -19,7 +19,7 @@ export default {
     },
     methods:{
         getKeyWord(){
-            this.$http.get('/index1/jsonp/multiget/3',{
+            this.$http.get(this.config_server.index1+'/jsonp/multiget/3',{
                 params: {
                     pids: '6348',
                     callback: 'jsonp6348'

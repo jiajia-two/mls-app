@@ -40,7 +40,7 @@ export default {
                 spinnerType: 'fading-circle'
             });
             this.isloading = true
-            this.$jsonp('/index2/search',{
+            this.$jsonp(this.config_server.index2+'/search',{
                 frame: this.frame,
                 page: this.page,
                 cKey: 'wap-index',

@@ -40,7 +40,7 @@
                 var _pid = '?pid'
                 var _fcid = '?fcid'
                 if(arr[0] === _pid){
-                    this.$http.get('/mls/venus/mce/v1/urlMakeUpChange/h5',{
+                    this.$http.get(this.config_server.mls+'/venus/mce/v1/urlMakeUpChange/h5',{
                         params:{
                             channel: 'wap',
                             page: 1,
@@ -52,7 +52,7 @@
                     })
                 }
                 if(arr[0] == _fcid){
-                    this.$http.get('/list/search',{
+                    this.$http.get(this.config_server.list+'/search',{
                         params:{
                             frame: 0,
                             page: 1 ,

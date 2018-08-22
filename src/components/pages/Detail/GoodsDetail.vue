@@ -140,7 +140,7 @@ export default {
         fetchData(){
             this.loading = true;
             var params= this.$route.query;
-            this.$http.get('/detail/detail/mls/v1/h5',{
+            this.$http.get(this.config_server.detail+'/detail/mls/v1/h5',{
                 params:{
                     iid:params.goodsId,
                     _ajax:1,
@@ -167,7 +167,7 @@ export default {
         recommend(){
             this.loading = true;
             var params= this.$route.query;
-            this.$jsonp('/index1/jsonp/recommend/4',{
+            this.$jsonp(this.config_server.index1+'/jsonp/recommend/4',{
                     pid: 6011,
                     iidE: params.goodsId,
                     _: 1533720530064,

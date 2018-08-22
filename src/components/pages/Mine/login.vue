@@ -36,7 +36,7 @@ import md5 from 'js-md5'
         },
         methods: {
              sendCode() { //发送验证码
-                this.$http.post('/mz/v4/api/code?__t=' + Date.now,{
+                this.$http.post(this.config_server.mz+'/v4/api/code?__t=' + Date.now,{
                     mobile: this.phone,
                     type: "2"
            }).then(res => {
