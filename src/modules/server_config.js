@@ -1,4 +1,4 @@
-const  is_proxy = true
+const  is_proxy = false
 const index1 = is_proxy ? '/index1' : 'https://mce.mogucdn.com'
 const index2 = is_proxy ? '/index2' : 'http://list.meilishuo.com'
 const detail = is_proxy ? '/detail' : 'http://m.meilishuo.com'

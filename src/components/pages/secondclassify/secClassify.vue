@@ -15,7 +15,7 @@
                 <div v-else @click="getShopId(item.iid)" class="classify2" :iid="item.iid">
                     <div>
                         <img :src="item.show.img" alt="" class="desPic">
-                        <div class="cla2">{{item.title}}</div>
+                        <p class="cla2">{{item.title}}</p>
                         <span class="oldprice">{{item.orgPrice}}</span>
                         <span class="nowprice">￥{{item.price}}</span>
                     </div>  
@@ -40,7 +40,7 @@
                 var _pid = '?pid'
                 var _fcid = '?fcid'
                 if(arr[0] === _pid){
-                    this.$http.get(this.config_server.mls+'/venus/mce/v1/urlMakeUpChange/h5',{
+                    this.$http.get('/mls/venus/mce/v1/urlMakeUpChange/h5',{
                         params:{
                             channel: 'wap',
                             page: 1,
@@ -52,7 +52,7 @@
                     })
                 }
                 if(arr[0] == _fcid){
-                    this.$http.get(this.config_server.list+'/search',{
+                    this.$http.get('/list/search',{
                         params:{
                             frame: 0,
                             page: 1 ,
@@ -117,7 +117,7 @@
         .out{
             // margin-left:0.2rem;
             text-align:left;
-           
+            color:#ff1877;
         }
         .second{
         //    margin-left:1.45rem;
@@ -158,15 +158,15 @@
                 width:50%;
                  display:flex;
                 flex-flow: column;
+               .desPic{
+                    width:1.8rem;
+                    height:2.69rem;
+                }
                 .cla2{
                     width:1.8rem;
                     overflow: hidden;
                     text-overflow:ellipsis;
                     white-space: nowrap;
-                }
-               .desPic{
-                    width:1.8rem;
-                    height:2.69rem;
                 }
                 .oldprice{
                     text-decoration: line-through;

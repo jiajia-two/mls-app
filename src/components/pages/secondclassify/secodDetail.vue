@@ -1,7 +1,7 @@
 <template>
     <div class="secclassify">
         <div class="top">
-            <div @click="$router.go(-1)" class="out fa fa-chevron-left"></div>
+            <p @click="$router.go(-1)" class="out fa fa-chevron-left"></p>
             <div class="second">二级分类</div>
             <div></div>
         </div>
@@ -11,7 +11,7 @@
                 <div @click="getShopId(item.iid)" class="classify2" :iid="item.iid">
                     <div v-if="item.show.img">
                         <img :src="item.show.img" alt="" class="desPic">
-                        <div class="cla2">{{item.title}}</div>
+                        <p class="cla2">{{item.title}}</p>
                         <span class="oldprice">{{item.orgPrice}}</span>
                         <span class="nowprice">￥{{item.price}}</span>
                     </div>  
@@ -33,7 +33,7 @@
                 var url =location.search;
                 var arr =url.split('=');
                 var pid = arr[1];
-                this.$http.get(this.config_server.list+'/search',{
+                this.$http.get('/list/search',{
                     params:{
                         frame: 0,
                         page: 1 ,
@@ -78,13 +78,15 @@
         border-bottom:1px solid #ccc;
         .out{
             // margin-left:0.2rem;
-            text-align:left;
+           
+            color:#ff1877;
            
         }
         .second{
         //    margin-left:1.45rem;
            color:#ff1877;
-         
+           text-align:center;
+            margin-left:1rem;
         }
     }
     .title {
@@ -99,8 +101,9 @@
         div {
             flex:1;
             width:50%;
-                display:flex;
+            display:flex;
             flex-flow: column;
+            align-items:center;
             .cla2{
                 width:1.8rem;
                 overflow: hidden;
