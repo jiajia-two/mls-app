@@ -28,4 +28,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 
-如果报错，看看是不是node-sass的安装问题。npm install node-sass -D
+如果pull下来报错，看看是不是node-sass的安装问题。npm install node-sass -D
