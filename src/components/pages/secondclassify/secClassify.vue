@@ -34,13 +34,15 @@
         },
         methods:{
             getData(){
-                var url =location.search;
+                var url1 =window.location.href;
+                var url =url1.split('?')[1]
                 var arr =url.split('=');
                 var pid = arr[1];
-                var _pid = '?pid'
-                var _fcid = '?fcid'
-                if(arr[0] === _pid){
-                    this.$http.get('/mls/venus/mce/v1/urlMakeUpChange/h5',{
+                var _pid = 'pid';
+                var _fcid ='fcid';
+                console.log(arr)
+                if(arr[0] == _pid){
+                    this.$http.get(this.config_server.mls+'/venus/mce/v1/urlMakeUpChange/h5',{
                         params:{
                             channel: 'wap',
                             page: 1,
@@ -52,15 +54,16 @@
                     })
                 }
                 if(arr[0] == _fcid){
-                    this.$http.get('/list/search',{
+                    console.log(pid)
+                    this.$http.get(this.config_server.index2+'/search',{
                         params:{
                             frame: 0,
                             page: 1 ,
                             sort: 'pop',
                             cKey: 'wap-cate',
                             _mgjuuid: 'b10123d6-bb98-401c-bd8d-7f6947ab3d4d',
-                            fcid: pid               
-                        }
+                            fcid: pid,              
+                        }              
                     }).then(res => {
                         this.items = res.data.data.list
                     })
@@ -94,7 +97,7 @@
 		  		})
             }
         },
-        created(){
+       created(){
             this.getData()
         }
     }

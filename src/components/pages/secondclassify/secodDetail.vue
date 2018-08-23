@@ -30,10 +30,12 @@
         },
         methods:{
             getData(){
-                var url =location.search;
+                var url1 = window.location.href;
+                var url = url1.split('?')[1]
                 var arr =url.split('=');
+                console.log(arr)
                 var pid = arr[1];
-                this.$http.get('/list/search',{
+                this.$http.get(this.config_server.index2+'/search',{
                     params:{
                         frame: 0,
                         page: 1 ,
